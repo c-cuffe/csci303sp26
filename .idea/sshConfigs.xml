@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="ccuresearch.coastal.edu" id="5c95aa77-6053-407f-9956-a4ec7bc94133" port="8822" nameFormat="DESCRIPTIVE" username="cecuffe" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
