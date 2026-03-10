@@ -27,7 +27,7 @@ else {
         <tr><th>Resource ID</th><td><?php echo $row['res_id'];?></td></tr>
         <tr><th>Student Contributor</th><td><?php echo $row['fname'];?></td></tr>
         <tr><th>Title</th><td><?php echo $row['title'];?></td></tr>
-        <tr><th>URL</th><td><?php echo $row['url'];?></td></tr>
+        <tr><th>URL</th><td><?php echo "<a href='{$row["url"]}' target='_blank'>{$row['url']}</a>"?></td></tr>
         <tr><th>Description</th><td><?php echo $row['description'];?></td></tr>
         <tr><th>Date Added</th><td><?php echo $row['radd'];?></td></tr>
         <tr><th>Last Updated</th><td><?php echo $row['rupd'];?></td></tr>

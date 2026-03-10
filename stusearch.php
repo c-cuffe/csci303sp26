@@ -35,7 +35,7 @@ if (isset($_GET['term'])) {
         } else {
             echo "<p class='success'>This search returned the following results:</p>";
             foreach ($result as $row) {
-                echo "<a href='stuview.php?q={$row['stu_id']}'>{$row['fname']} - {$row['email']}</a><br>";
+                echo "<a href='stuview.php?q={$row['stu_id']}' target='_blank'>{$row['fname']} - {$row['email']}</a><br>";
             } // end of foreach
         } // else if there are results
     } // if empty
