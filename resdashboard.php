@@ -8,10 +8,25 @@
  */
 $pageName = "Resources Dashboard";
 require "header.php";
+if (isset($_GET['q'])){
+    switch ($_GET['q']){
+        case "ia": $sorting = "res_id ASC";
+            break;
+        case "id": $sorting = "res_id DESC";
+            break;
+        case "ta": $sorting = "title ASC";
+            break;
+        case "td": $sorting = "title DESC";
+            break;
+        default: $sorting = "title";
+    }
+}else {
+    $sorting = "title";
+}
 ?>
 
 <?php
-$sql = "SELECT res_id, title FROM resources ORDER BY title";
+$sql = "SELECT res_id, title FROM resources ORDER BY $sorting";
 //prepares a statement for execution
 $stmt = $pdo->prepare($sql);
 //exectues a prepared statement
@@ -20,7 +35,11 @@ $stmt ->execute();
 //default:  array indexed by both column name and 0-indexed column number
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<table><tr><th>View</th><th>Update</th><th>Delete</th><th>ID</th><th>Title</th></tr>
+<table><tr><th>View</th><th>Update</th><th>Delete</th>
+        <th>ID<a href="<?php echo $currentFile;?>?q=ia">&#11165;</a>
+            <a href="<?php echo $currentFile;?>?q=id">&#11167;</a></th>
+        <th>Title<a href="<?php echo $currentFile;?>?q=ta">&#11165;</a>
+            <a href="<?php echo $currentFile;?>?q=td">&#11167;</a></th></tr>
 <?php
 foreach ($result as $row) {
     echo "<tr><td><a href='resview.php?q=". $row['res_id'] . "'>View</a></td>";
