@@ -33,6 +33,8 @@ $currentFile = basename($_SERVER['SCRIPT_FILENAME']);
     echo ($currentFile == "resdashboard.php") ? "Resource Dashboard" : "<a href='resdashboard.php'>Resource Dashboard</a>";
     echo ($currentFile == "studashboard.php") ? "Student Dashboard" : "<a href='studashboard.php'>Student Dashboard</a>";
     echo ($currentFile == "stulist.php") ? "Student List" : "<a href='stulist.php'>Student List</a>";
+    echo ($currentFile == "ressearch.php") ? "Search Resources" : "<a href='ressearch.php'>Resource Search</a>";
+    echo ($currentFile == "stusearch.php") ? "Search Students" : "<a href='stusearch.php'>Student Search</a>";
     // continue main nav here
     ?>
 </nav>

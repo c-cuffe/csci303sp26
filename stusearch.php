@@ -18,10 +18,11 @@ require "header.php";
 <?php
 if (isset($_GET['term'])) {
     if (empty($_GET['term'])) {
-        echo "<p>No term entered. Please try again?</p>";
+        echo "<p class='error'>No search term was entered. Please make an entry and try again.</p>";
     } else {
+        echo "<p>Searching for ". htmlspecialchars($_GET['term']). "</p>";
         $term = $_GET['term'] . "%"; //append wildcard character
-        $sql = "SELECT fname
+        $sql = "SELECT stu_id, fname, email
                 FROM students
                 WHERE fname LIKE :term
                 ORDER BY fname";
@@ -30,11 +31,11 @@ if (isset($_GET['term'])) {
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (!$result) {
-            echo "<p>We could not find any results.</p>";
+            echo "<p class='error'>No results found.</p>";
         } else {
-            echo "<p>We found the following results:</p>";
+            echo "<p class='success'>This search returned the following results:</p>";
             foreach ($result as $row) {
-                echo $row['fname'] . "<br>";
+                echo "<a href='stuview.php?q={$row['stu_id']}'>{$row['fname']} - {$row['email']}</a><br>";
             } // end of foreach
         } // else if there are results
     } // if empty
