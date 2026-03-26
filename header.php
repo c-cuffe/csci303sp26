@@ -24,6 +24,8 @@ $currentFile = basename($_SERVER['SCRIPT_FILENAME']);
     <meta charset="UTF-8">
     <title>cecuffe</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="/csci303/tinymce/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
 <h1>Cecilia Cuffe</h1>
@@ -35,6 +37,7 @@ $currentFile = basename($_SERVER['SCRIPT_FILENAME']);
     echo ($currentFile == "stulist.php") ? "Student List" : "<a href='stulist.php'>Student List</a>";
     echo ($currentFile == "ressearch.php") ? "Search Resources" : "<a href='ressearch.php'>Resource Search</a>";
     echo ($currentFile == "stusearch.php") ? "Search Students" : "<a href='stusearch.php'>Student Search</a>";
+    echo ($currentFile == "stuadd.php") ? "Add Student" : "<a href='stuadd.php'>Add Student</a>";
     // continue main nav here
     ?>
 </nav>
