@@ -144,23 +144,20 @@ if ($showForm) {
     <form name="add_stu" id="add_stu" method="POST" action="<?php echo $currentFile; ?>">
     	<label for="fname">First Name</label>
         <br>
-        <?php if (isset($errors['fname'])) { echo "<span class='error'>&#10006; " . $errors['fname'] . "</span>";}?>
         <input type="text" name="fname" id="fname" value="<?php if (isset($fname)) {echo htmlspecialchars($fname);}?>">
+        <?php if (isset($errors['fname'])) { echo "<span class='error'>&#10006; " . $errors['fname'] . "</span>";}?>
         <br>
         <label for="email">Email</label>
         <br>
-        <?php if (isset($errors['email'])) { echo "<span class='error'>&#10006; " . $errors['email'] . "</span>";}?>
-        <br>
         <input type="email" name="email" id="email" value="<?php if (isset($email)) {echo htmlspecialchars($email);}?>">
-        <br>
+        <?php if (isset($errors['email'])) { echo "<span class='error'>&#10006; " . $errors['email'] . "</span><br>";}?>
         <label for="pwd">Password</label>
         <br>
         <?php if (isset($errors['pwd'])) { echo "<span class='error'>&#10006; " . $errors['pwd'] . "</span>";}?>
         <input type="password" name="pwd" id="pwd" size="72" placeholder="Must be at least 15 and no more than 72 characters">
         <br>
         <label for="major">Select a Major</label>
-        <br>
-        <?php if (isset($errors['major'])) { echo "<span class='error'>&#10006; " . $errors['major'] . "</span>";}?>
+        <?php if (isset($errors['major'])) { echo "<span class='error'>&#10006; " . $errors['major'] . "</span><br>";}?>
         <br>
         <select name="major" id="major">
         <?php
@@ -173,25 +170,19 @@ if ($showForm) {
         }
         ?>
         </select>
-        <br>
         <fieldset>
         <legend>Select the Class Standing</legend>
-            <br>
-            <?php if (isset($errors['standing'])) { echo "<span class='error'>&#10006; " . $errors['standing'] . "</span>";}?>
-            <br>
+            <?php if (isset($errors['standing'])) { echo "<span class='error'>&#10006; " . $errors['standing'] . "</span><br>";}?>
             <input type="radio" name="standing" id="FR" value="FR"> <?php if (isset($standing) && $standing == "FR") { echo "checked";}?><label for="FR">Freshman</label><br>
             <input type="radio" name="standing" id="SO" value="SO" <?php if (isset($standing) && $standing == "SO") { echo "checked";}?>><label for="SO">Sophomore</label><br>
             <input type="radio" name="standing" id="JR" value="JR" <?php if (isset($standing) && $standing == "JR") { echo "checked";}?>><label for="JR">Junior</label><br>
             <input type="radio" name="standing" id="SR" value="SR" <?php if (isset($standing) && $standing == "SR") { echo "checked";}?>><label for="SR">Senior</label><br>
             <input type="radio" name="standing" id="OT" value="OT" <?php if (isset($standing) && $standing == "OT") { echo "checked";}?>><label for="OT">Other</label><br>
         </fieldset>
-        <br>
         <label for="bio">Student Biography</label>
+        <?php if (isset($errors['bio'])) { echo "<br><span class='error'>&#10006; " . $errors['bio'] . "</span><br>";}?>
         <br>
-        <?php if (isset($errors['bio'])) { echo "<span class='error'>&#10006; " . $errors['bio'] . "</span>";}?>
-        <br>
-        <br>
-        <textarea name="bio" id="bio" ><?php if (isset($bio)) {echo $bio;}?>"</textarea>
+        <textarea name="bio" id="bio"><?php if (isset($bio)) {echo $bio;}?></textarea>
         <br>
         <input type="submit" name="submit" id="submit" value="submit">
     </form>
