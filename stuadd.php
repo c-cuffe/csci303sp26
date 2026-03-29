@@ -151,9 +151,10 @@ if ($showForm) {
         <br>
         <input type="email" name="email" id="email" value="<?php if (isset($email)) {echo htmlspecialchars($email);}?>">
         <?php if (isset($errors['email'])) { echo "<span class='error'>&#10006; " . $errors['email'] . "</span><br>";}?>
+        <br>
         <label for="pwd">Password</label>
         <br>
-        <?php if (isset($errors['pwd'])) { echo "<span class='error'>&#10006; " . $errors['pwd'] . "</span>";}?>
+        <?php if (isset($errors['pwd'])) { echo "<span class='error'>&#10006; " . $errors['pwd'] . "</span><br>";}?>
         <input type="password" name="pwd" id="pwd" size="72" placeholder="Must be at least 15 and no more than 72 characters">
         <br>
         <label for="major">Select a Major</label>
