@@ -174,7 +174,7 @@ if ($showForm) {
         <fieldset>
         <legend>Select the Class Standing</legend>
             <?php if (isset($errors['standing'])) { echo "<span class='error'>&#10006; " . $errors['standing'] . "</span><br>";}?>
-            <input type="radio" name="standing" id="FR" value="FR"> <?php if (isset($standing) && $standing == "FR") { echo "checked";}?><label for="FR">Freshman</label><br>
+            <input type="radio" name="standing" id="FR" value="FR" <?php if (isset($standing) && $standing == "FR") { echo "checked";}?>><label for="FR">Freshman</label><br>
             <input type="radio" name="standing" id="SO" value="SO" <?php if (isset($standing) && $standing == "SO") { echo "checked";}?>><label for="SO">Sophomore</label><br>
             <input type="radio" name="standing" id="JR" value="JR" <?php if (isset($standing) && $standing == "JR") { echo "checked";}?>><label for="JR">Junior</label><br>
             <input type="radio" name="standing" id="SR" value="SR" <?php if (isset($standing) && $standing == "SR") { echo "checked";}?>><label for="SR">Senior</label><br>
