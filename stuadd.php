@@ -89,6 +89,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (empty($standing)) {
         $errors['standing'] = "Please select a standing.";
     }
+    if (empty($major)) {
+        $errors['major'] = "Please select a major.";
+    }
     if (empty($bio)) {
         $errors['bio'] = "Please enter a biography.";
     }
@@ -143,24 +146,23 @@ if ($showForm) {
 
     <form name="add_stu" id="add_stu" method="POST" action="<?php echo $currentFile; ?>">
     	<label for="fname">First Name</label>
-        <br>
         <input type="text" name="fname" id="fname" value="<?php if (isset($fname)) {echo htmlspecialchars($fname);}?>">
+        <br>
         <?php if (isset($errors['fname'])) { echo "<span class='error'>&#10006; " . $errors['fname'] . "</span>";}?>
         <br>
         <label for="email">Email</label>
-        <br>
         <input type="email" name="email" id="email" value="<?php if (isset($email)) {echo htmlspecialchars($email);}?>">
+        <br>
         <?php if (isset($errors['email'])) { echo "<span class='error'>&#10006; " . $errors['email'] . "</span><br>";}?>
         <br>
         <label for="pwd">Password</label>
-        <br>
-        <?php if (isset($errors['pwd'])) { echo "<span class='error'>&#10006; " . $errors['pwd'] . "</span><br>";}?>
         <input type="password" name="pwd" id="pwd" size="72" placeholder="Must be at least 15 and no more than 72 characters">
         <br>
-        <label for="major">Select a Major</label>
-        <?php if (isset($errors['major'])) { echo "<span class='error'>&#10006; " . $errors['major'] . "</span><br>";}?>
+        <?php if (isset($errors['pwd'])) { echo "<span class='error'>&#10006; " . $errors['pwd'] . "</span><br>";}?>
         <br>
+        <label for="major">Select a Major</label>
         <select name="major" id="major">
+            <option value="" <?php if (isset($major) && $major =="") { echo " selected";}?>>CHOOSE A MAJOR</option>
         <?php
         $sql = "SELECT * FROM majors ORDER BY priority";
         $result = $pdo->query($sql);
@@ -171,6 +173,9 @@ if ($showForm) {
         }
         ?>
         </select>
+        <br>
+        <?php if (isset($errors['major'])) { echo "<span class='error'>&#10006; " . $errors['major'] . "</span><br>";}?>
+        <br>
         <fieldset>
         <legend>Select the Class Standing</legend>
             <?php if (isset($errors['standing'])) { echo "<span class='error'>&#10006; " . $errors['standing'] . "</span><br>";}?>
@@ -180,6 +185,7 @@ if ($showForm) {
             <input type="radio" name="standing" id="SR" value="SR" <?php if (isset($standing) && $standing == "SR") { echo "checked";}?>><label for="SR">Senior</label><br>
             <input type="radio" name="standing" id="OT" value="OT" <?php if (isset($standing) && $standing == "OT") { echo "checked";}?>><label for="OT">Other</label><br>
         </fieldset>
+        <br>
         <label for="bio">Student Biography</label>
         <?php if (isset($errors['bio'])) { echo "<br><span class='error'>&#10006; " . $errors['bio'] . "</span><br>";}?>
         <br>
