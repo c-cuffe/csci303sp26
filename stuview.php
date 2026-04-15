@@ -26,9 +26,13 @@ if(!$row) {
 else {
 ?>
     <table>
+        <?php if(isset($_SESSION['stu_id']) && ($_SESSION['stu_id'] == $row['stu_id'] || $_SESSION['access'] == 1)) { ?>
         <tr><th>Student ID</th><td><?php echo $row['stu_id'];?></td></tr>
+        <?php } ?>
         <tr><th>First Name</th><td><?php echo $row['fname'];?></td></tr>
+        <?php if(isset($_SESSION['stu_id']) && ($_SESSION['stu_id'] == $row['stu_id'] || $_SESSION['access'] == 1)) { ?>
         <tr><th>Email</th><td><?php echo $row['email'];?></td></tr>
+        <?php } ?>
         <tr><th>Program</th><td><?php echo $row['program'];?></td></tr>
         <tr><th>Class Standing</th><td><?php echo $row['standing'];?></td></tr>
         <tr><th>Biography</th><td><?php echo $row['bio'];?></td></tr>

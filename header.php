@@ -6,6 +6,7 @@
    * Date:  2/15/2026
    * Filename:  header.php
  */
+session_start();
 //Error Reporting
 error_reporting(E_ALL);
 ini_set('display_errors','1');
@@ -39,6 +40,12 @@ $currentFile = basename($_SERVER['SCRIPT_FILENAME']);
     echo ($currentFile == "stusearch.php") ? "Search Students" : "<a href='stusearch.php'>Student Search</a>";
     echo ($currentFile == "stuadd.php") ? "Add Student" : "<a href='stuadd.php'>Add Student</a>";
     // continue main nav here
+    if (isset($_SESSION['stu_id'])) {
+        echo ($currentFile == "logout.php") ? "Logout" : "<a href='logout.php'>Logout</a>";
+    }
+    else {
+        echo ($currentFile == "login.php") ? "Log In" : "<a href='login.php'>Log In</a>";
+    }
     ?>
 </nav>
 <h2><?php echo $pageName;?></h2>

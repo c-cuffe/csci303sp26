@@ -8,6 +8,7 @@
  */
 $pageName = "Student Dashboard";
 require "header.php";
+check_login();
 if (isset($_GET['q'])){
     switch ($_GET['q']){
         case "ia": $sorting = "stu_id ASC";
@@ -45,7 +46,10 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php
 foreach ($result as $row) {
     echo "<tr><td><a href='stuview.php?q=". $row['stu_id'] . "'>View</a></td>";
-    echo "<td><a href='stuupdate.php?q=". $row['stu_id'] . "'>Update</a></td>";;
+    echo "<td>";
+    if(isset($_SESSION['stu_id']) && ($_SESSION['stu_id'] == $row['stu_id'])) {
+        echo "<a href='stuupdate.php?q=". $row['stu_id'] . "'>Update</a>";}
+    echo "</td>";
     echo "<td>" . $row['stu_id'] . "</td>";
     echo "<td>" . $row['fname'] . "</td></tr>";
 }

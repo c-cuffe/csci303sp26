@@ -8,6 +8,8 @@
  */
 $pageName = "Resources Dashboard";
 require "header.php";
+check_login();
+echo "<a href='resadd.php'>Add Resource</a>";
 if (isset($_GET['q'])){
     switch ($_GET['q']){
         case "ia": $sorting = "res_id ASC";
@@ -26,7 +28,7 @@ if (isset($_GET['q'])){
 ?>
 
 <?php
-$sql = "SELECT res_id, title FROM resources ORDER BY $sorting";
+$sql = "SELECT res_id, title, fk_stu_id FROM resources ORDER BY $sorting";
 //prepares a statement for execution
 $stmt = $pdo->prepare($sql);
 //exectues a prepared statement
@@ -43,8 +45,14 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php
 foreach ($result as $row) {
     echo "<tr><td><a href='resview.php?q=". $row['res_id'] . "'>View</a></td>";
-    echo "<td><a href='resupdate.php?q=". $row['res_id'] . "'>Update</a></td>";
-    echo "<td><a href='resdelete.php?q=". $row['res_id'] . "'>Delete</a></td>";
+    echo "<td>";
+    if(isset($_SESSION['stu_id']) && ($_SESSION['stu_id'] == $row['fk_stu_id'])) {
+        echo "<a href='resupdate.php?q=" . $row['res_id'] . "'>Update</a>";}
+    echo "</td>";
+    echo "<td>";
+    if(isset($_SESSION['stu_id']) && ($_SESSION['stu_id'] == $row['fk_stu_id'] || $_SESSION['access'] == 1)) {
+            echo "<a href='resdelete.php?q=". $row['res_id'] . "'>Delete</a>";}
+    echo "</td>";
     echo "<td>" . $row['res_id'] . "</td>";
     echo "<td>" . $row['title'] . "</td></tr>";
 }

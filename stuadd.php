@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
      * PART 3.1 - TROUBLESHOOTING
      * Use print_r or var_dump for troubleshooting, but COMMENT OUT when done testing!
      * ******************************************************************************************** */
-     var_dump($_POST);
+     // var_dump($_POST);
 
     /* ***********************************************************************************************
      * PART 3.2 - CREATE LOCAL VARIABLES
