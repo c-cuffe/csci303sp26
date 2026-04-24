@@ -1,2 +1,59 @@
-.error {color: #A80000;}
+.error {color: #ff0000;}
 .success {color: #006600;}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #cc3f03;
+    background-color: #fdfdff;
+}
+h1, h2, p, footer {
+    text-align: center;
+}
+p {
+    font-size: 1.5em;
+}
+nav {
+    background-color: #fdfbd4;
+    text-align: center;
+    padding: 10px 10px;
+    line-height: 40px;
+    font-variant: small-caps;
+    color: #cc3f03;
+}
+nav a {
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+nav a:hover {
+    text-decoration: none;
+    border: 3px dotted #cc3f03;
+    color: #cc3f03;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: #cc3f03;
+}
+a:hover {
+    text-decoration: underline;
+}
+table, th, tr {
+    border: 3px solid #cc3f03;
+    color: #cc3f03;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+#submit, #search {
+    border: 3px solid #cc3f03;
+    background-color: #fdfbd4;
+    color: #cc3f03;
+    margin: 10px 10px 10px 10px;
+}
+form {
+    justify-content: left;
+    color: #cc3f03;
+}
+#submit {
+    margin: 10px 10px;
+}
