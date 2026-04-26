@@ -30,6 +30,7 @@ else {
         <tr><th>Student ID</th><td><?php echo $row['stu_id'];?></td></tr>
         <?php } ?>
         <tr><th>First Name</th><td><?php echo $row['fname'];?></td></tr>
+        <tr><th>Last Name</th><td><?php echo $row['lname'];?></td></tr>
         <?php if(isset($_SESSION['stu_id']) && ($_SESSION['stu_id'] == $row['stu_id'] || $_SESSION['access'] == 1)) { ?>
         <tr><th>Email</th><td><?php echo $row['email'];?></td></tr>
         <?php } ?>

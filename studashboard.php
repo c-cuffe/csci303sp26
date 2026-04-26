@@ -9,6 +9,7 @@
 $pageName = "Student Dashboard";
 require "header.php";
 check_login();
+echo "<a href='stupass.php'>Update User Password</a>";
 if (isset($_GET['q'])){
     switch ($_GET['q']){
         case "ia": $sorting = "stu_id ASC";
@@ -19,6 +20,10 @@ if (isset($_GET['q'])){
         break;
         case "fd": $sorting = "fname DESC";
         break;
+        case "la": $sorting = "lname ASC";
+            break;
+        case "ld": $sorting = "lname DESC";
+            break;
         default: $sorting = "fname";
     }
 }else {
@@ -27,7 +32,7 @@ if (isset($_GET['q'])){
 ?>
 
 <?php
-$sql = "SELECT stu_id, fname FROM students ORDER BY $sorting";
+$sql = "SELECT stu_id, fname, lname FROM students ORDER BY $sorting";
 //prepares a statement for execution
 $stmt = $pdo->prepare($sql);
 //exectues a prepared statement
@@ -42,16 +47,19 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <th>ID<a href="<?php echo $currentFile;?>?q=ia">&#11165;</a>
             <a href="<?php echo $currentFile;?>?q=id">&#11167;</a></th>
         <th>First Name<a href="<?php echo $currentFile;?>?q=fa">&#11165;</a>
-            <a href="<?php echo $currentFile;?>?q=fd">&#11167;</a></th></tr>
+            <a href="<?php echo $currentFile;?>?q=fd">&#11167;</a></th>
+        <th>Last Name<a href="<?php echo $currentFile;?>?q=la">&#11165;</a>
+            <a href="<?php echo $currentFile;?>?q=ld">&#11167;</a></th></tr>
 <?php
 foreach ($result as $row) {
     echo "<tr><td><a href='stuview.php?q=". $row['stu_id'] . "'>View</a></td>";
     echo "<td>";
-    if(isset($_SESSION['stu_id']) && ($_SESSION['stu_id'] == $row['stu_id'])) {
+    if ($_SESSION['stu_id'] == $row['stu_id'] || $_SESSION['access'] == 1) {
         echo "<a href='stuupdate.php?q=". $row['stu_id'] . "'>Update</a>";}
     echo "</td>";
     echo "<td>" . $row['stu_id'] . "</td>";
-    echo "<td>" . $row['fname'] . "</td></tr>";
+    echo "<td>" . $row['fname'] . "</td>";
+    echo "<td>" . $row['lname'] . "</td></tr>";
 }
 ?>
 </table>

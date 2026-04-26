@@ -33,14 +33,14 @@ $currentFile = basename($_SERVER['SCRIPT_FILENAME']);
 <nav>
     <?php
     echo ($currentFile == "index.php") ? "Home" : "<a href='index.php'>Home</a>";
-    echo ($currentFile == "resdashboard.php") ? "Resource Dashboard" : "<a href='resdashboard.php'>Resource Dashboard</a>";
-    echo ($currentFile == "studashboard.php") ? "Student Dashboard" : "<a href='studashboard.php'>Student Dashboard</a>";
     echo ($currentFile == "stulist.php") ? "Student List" : "<a href='stulist.php'>Student List</a>";
     echo ($currentFile == "ressearch.php") ? "Search Resources" : "<a href='ressearch.php'>Resource Search</a>";
     echo ($currentFile == "stusearch.php") ? "Search Students" : "<a href='stusearch.php'>Student Search</a>";
     echo ($currentFile == "stuadd.php") ? "Add Student" : "<a href='stuadd.php'>Add Student</a>";
     // continue main nav here
     if (isset($_SESSION['stu_id'])) {
+        echo ($currentFile == "resdashboard.php") ? "Resource Dashboard" : "<a href='resdashboard.php'>Resource Dashboard</a>";
+        echo ($currentFile == "studashboard.php") ? "Student Dashboard" : "<a href='studashboard.php'>Student Dashboard</a>";
         echo ($currentFile == "logout.php") ? "Logout" : "<a href='logout.php'>Logout</a>";
     }
     else {

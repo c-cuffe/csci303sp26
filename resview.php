@@ -8,7 +8,7 @@
  */
 $pageName = "View Resource";
 require "header.php";
-$sql = "SELECT res_id, fname, title, description, url, fk_stu_id, resources.added as radd, resources.updated as rupd 
+$sql = "SELECT res_id, fname, lname, title, description, url, fk_stu_id, resources.added as radd, resources.updated as rupd 
         FROM resources INNER JOIN students
         ON resources.fk_stu_id = students.stu_id
         WHERE res_id = :res_id
@@ -25,7 +25,7 @@ else {
     ?>
     <table>
         <tr><th>Resource ID</th><td><?php echo $row['res_id'];?></td></tr>
-        <tr><th>Student Contributor</th><td><?php echo "<a href='https://ccuresearch.coastal.edu/cecuffe/csci303sp26/stuview.php?q={$row["fk_stu_id"]}' target='_blank'>{$row['fname']}</a>"?></td></tr>
+        <tr><th>Student Contributor</th><td><?php echo "<a href='https://ccuresearch.coastal.edu/cecuffe/csci303sp26/stuview.php?q={$row["fk_stu_id"]}' target='_blank'>{$row['fname']} {$row['lname']}</a>"?></td></tr>
         <tr><th>Title</th><td><?php echo $row['title'];?></td></tr>
         <tr><th>URL</th><td><?php echo "<a href='{$row["url"]}' target='_blank'>{$row['url']}</a>"?></td></tr>
         <tr><th>Description</th><td><?php echo $row['description'];?></td></tr>

@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
      *     Leave passwords unaltered.
      * ******************************************************************************************** */
         $fname = trim($_POST['fname']);
+        $lname = trim($_POST['lname']);
         $email = trim($_POST['email']);
         $pwd = $_POST['pwd'];
         $major = $_POST['major'];
@@ -73,6 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (empty($fname)) {
 		    $errors['fname'] = "Please enter a first name.";
 	    }
+        if (empty($lname)) {
+            $errors['lname'] = "Please enter a last name.";
+        }
         //additional error checking goes here...
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = "Please enter a valid email address.";
@@ -118,10 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
          *    NOTE CSS CLASS .success created in Style Sheet
          *    HIDE THE FORM upon SUCCESS
         * ******************************************************************************************** */
-        $sql = "INSERT INTO students (fname, email, pwd, fk_mjr_id, standing, bio) 
-        VALUES (:fname, :email, :pwd, :fk_mjr_id, :standing, :bio)";
+        $sql = "INSERT INTO students (fname, lname, email, pwd, fk_mjr_id, standing, bio) 
+        VALUES (:fname, :lname, :email, :pwd, :fk_mjr_id, :standing, :bio)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':fname', $fname);
+        $stmt->bindValue(':lname', $lname);
         $stmt->bindValue(':email', $email);
         $stmt->bindValue(':pwd', password_hash($pwd, PASSWORD_DEFAULT));
         $stmt->bindValue(':fk_mjr_id', $major);
@@ -149,6 +154,11 @@ if ($showForm) {
         <input type="text" name="fname" id="fname" value="<?php if (isset($fname)) {echo htmlspecialchars($fname);}?>">
         <br>
         <?php if (isset($errors['fname'])) { echo "<span class='error'>&#10006; " . $errors['fname'] . "</span>";}?>
+        <br>
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" id="lname" value="<?php if (isset($lname)) {echo htmlspecialchars($lname);}?>">
+        <br>
+        <?php if (isset($errors['lname'])) { echo "<span class='error'>&#10006; " . $errors['lname'] . "</span>";}?>
         <br>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" value="<?php if (isset($email)) {echo htmlspecialchars($email);}?>">
